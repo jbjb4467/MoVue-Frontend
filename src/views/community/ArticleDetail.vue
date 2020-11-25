@@ -158,8 +158,8 @@ export default {
 
 .article {
   color: #f4f4f4;
-  background-color:#f4f4f4;
-  opacity: 0.5;
+  /* background-color:#f4f4f4; */
+  /* opacity: 0.5; */
   display: flex;
   flex-direction: column;
   -webkit-box-pack: center;
