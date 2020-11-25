@@ -2,7 +2,12 @@
   <nav class="navbar navbar-expand-lg fixed-top py-3">
     
     <div class="container">
-      <a class="navbar-brand font-weight-bold" @click.prevent="newAlert" href="http://localhost:8080/Home">MoVue</a>
+        <template v-if="isLogin">
+          <router-link class="nav-link font-weight-bold" :to="{ name: 'Home' }" @click.native="newAlert"><span class="font-weight-bold">MoVue</span></router-link>
+        </template>
+        <template v-else>
+          <router-link class="nav-link font-weight-bold" :to="{ name: 'Login' }" @click.native="newAlert"><span class="font-weight-bold">MoVue</span></router-link>
+        </template>
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fas fa-bars" style="color:#ffffff;"></i></button>
         
@@ -16,7 +21,7 @@
               
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 
-                <router-link class="dropdown-item" :to="{ name: 'Community' }"><span @click.prevent="newAlert" class="font-weight-bold">게시판1</span></router-link>
+                <router-link @click.native="newAlert" class="dropdown-item" :to="{ name: 'Community' }"><span class="font-weight-bold">게시판1</span></router-link>
               
               </div>
             
@@ -47,7 +52,7 @@
 
           </ul>
 
-          <div class="d-flex">
+          <div class="d-flex" @click="newAlert">
             <vue-bootstrap-typeahead
               v-model="movieSearch"
               :data="movieTitles"
