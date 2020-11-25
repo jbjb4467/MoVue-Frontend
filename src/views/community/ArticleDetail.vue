@@ -9,37 +9,37 @@
       </div>
       <div class="d-flex">
         <p style="width:100px; margin-bottom: 0;"><b>글쓴이</b></p>
-        <h4 class="text-left ml-4">{{ article.username }}</h4>
+        <p class="text-left ml-4">{{ article.username }}</p>
       </div>
       <div class="d-flex">
         <p style="width:100px; margin-bottom: 0;"><b>내용</b></p>
-        <h4 class="text-left ml-4">{{ article.content }}</h4>
-      </div>
-      <div class="d-flex pull-right">
-        <p style="width:100px;"><b>생성시간</b></p>
-        <p>{{ article.created_at | formatDate }}</p>
-      </div>
-      <div class="d-flex pull-right">
-        <p style="width:100px;"><b>수정시간</b></p>
-        <p>{{ article.updated_at | formatDate }}</p>
+        <p class="text-left ml-4">{{ article.content }}</p>
+      </div> 
+      <div>
+        <p class="float-right">생성시간: {{ article.created_at | formatDate }}</p>
+        </div>
+        <div>
+          <p class="float-right">수정시간: {{ article.updated_at | formatDate }}</p>
       </div>
 
   <!-- v-if="article.user ===" -->
+  
       <template v-if="article.username == username">
-        <button class="btn btn-light btn-sm" @click="updateArticle(article)" >update</button>
-        <button class="btn btn-light btn-sm" @click="deleteArticle(article)">
-          <router-link :to="{ name: 'Community' }">delete</router-link></button>
+        <div>
+          <button class="btn btn-light btn-sm" @click="updateArticle(article)" >update</button>
+          <button class="btn btn-light btn-sm" @click="deleteArticle(article)"><router-link :to="{ name: 'Community' }">delete</router-link></button>
+        </div>
       </template>
 
       <hr>
       <h4 class="font-weight-bolder text-center mb-0">Comment List</h4>
+      <hr>
       <CommentList
         :articleId="articleId"
         :newComment="newComment"
       />
       <form @submit.prevent="createComment">
         <input class="form-control form-control-sm" v-model="commentContent" type="text" placeholder="댓글을 입력해주세요.">
-        <button class="btn btn-secondary btn-sm" type="submit">Button</button>
       </form>
 
       <!-- <b-input-group class="mt-3">
@@ -83,7 +83,7 @@ export default {
   filters: {
     formatDate: function(value) {
       if (value) {
-        return moment(String(value)).format('YYYY년 MM월 DD일 hh:mm')
+        return moment(String(value)).format('YY.MM.DD hh:mm')
       }
     }
   },
@@ -158,6 +158,8 @@ export default {
 
 .article {
   color: #f4f4f4;
+  background-color:#f4f4f4;
+  opacity: 0.5;
   display: flex;
   flex-direction: column;
   -webkit-box-pack: center;

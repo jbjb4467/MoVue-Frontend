@@ -1,34 +1,42 @@
 <template>
-  <div> 
-      <div class="margin d-flex justify-content-between" 
-        v-for="(comment, idx) in comments" 
-        :key="idx">
-        <template v-if="idx !== updateIdx">
+  <div>  
+    <div class="margin d-flex justify-content-between" 
+      v-for="(comment, idx) in comments" 
+      :key="idx">
+      <template v-if="idx !== updateIdx">
+        <div>
           {{ comment.username }}
+        </div>
+        <div>
           {{ comment.content }}
-          {{ comment.created_at }}
-          {{ comment.updataed_at }}
-          <template v-if="comment.username == username">
+        </div>
+        <div>
+          {{ comment.created_at | formatDate }}
+          {{ comment.updataed_at | formatDate }}
+        
+          <template v-if="comment.username == username">            
             <button
-            type="button" class="btn btn-light btn-sm"
+            type="button" class="btn pull-right btn-light btn-sm"
             @click="deleteComment(comment, idx)"
             style="margin-left:15px">Delete</button>
-            <button type="button" class="btn btn-light btn-sm" @click="commentIdx(comment, idx)">update</button>
+            <button type="button" class="btn pull-right btn-light btn-sm" @click="commentIdx(comment, idx)">update</button>
           </template>
-        </template>
- 
-        <template v-else>
-          <form @submit.prevent="updateComment">
-            <input type="text" v-model="updateCommentContent">
-            <button>댓글달기</button>
-          </form>
-        </template>
-      </div>
+        </div>
+      </template>
+
+      <template v-else>
+        <form @submit.prevent="updateComment">
+          <input type="text" v-model="updateCommentContent">
+          <button>댓글달기</button>
+        </form>
+      </template>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import moment from 'moment'
 export default {
   name: 'CommentList',
   data: function () {
@@ -53,6 +61,13 @@ export default {
     newComment: {
         type: Object
     },
+  },
+  filters: {
+    formatDate: function(value) {
+      if (value) {
+        return moment(String(value)).format('MM월 DD일')
+      }
+    }
   },
   methods: {
     commentIdx: function (comment, idx) {
