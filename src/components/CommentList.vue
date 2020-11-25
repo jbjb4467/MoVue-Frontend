@@ -9,12 +9,18 @@
         </div>
         <div>
           {{ comment.content }}
+<<<<<<< HEAD
         </div>
         <div>
           {{ comment.created_at | formatDate }}
           {{ comment.updataed_at | formatDate }}
         
           <template v-if="comment.username == username">            
+=======
+          {{ comment.created_at | formatDate }}
+          {{ comment.updataed_at | formatDate }}
+          <template v-if="comment.username == username">
+>>>>>>> 84101640a94a49c07412d637f985acba55b41ef9
             <button
             type="button" class="btn pull-right btn-light btn-sm"
             @click="deleteComment(comment, idx)"
@@ -65,7 +71,11 @@ export default {
   filters: {
     formatDate: function(value) {
       if (value) {
+<<<<<<< HEAD
         return moment(String(value)).format('MM월 DD일')
+=======
+        return moment(String(value)).format('YYYY년 MM월 DD일 hh:mm')
+>>>>>>> 84101640a94a49c07412d637f985acba55b41ef9
       }
     }
   },
@@ -130,7 +140,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .margin{
     margin-left: 20px;

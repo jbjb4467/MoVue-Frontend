@@ -143,7 +143,7 @@ export default {
             .catch(err => console.log(err))
         })
         .catch(err => console.log(err))
-      this.$store.dispatch('selectMovie', 0)
+      // this.$store.dispatch('selectMovie', 0)
     },
   },
   methods: {

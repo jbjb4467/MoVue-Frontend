@@ -150,10 +150,10 @@ export default {
 }
 </script>
 
-<style >
+<style>
+
 #app > div {
   color: white;
-  /* padding-top: 8rem; */
 }
 
 .article {

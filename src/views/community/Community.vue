@@ -158,7 +158,6 @@ export default {
   flex-direction: column;
   -webkit-box-pack: center;
   justify-content: center;
-  width: 300px;
   padding-top: 8rem;
   position: relative;
   z-index: 2;
