@@ -7,25 +7,19 @@
         <div>
           {{ comment.username }}
         </div>
-        <div>
-          {{ comment.content }}
-<<<<<<< HEAD
-        </div>
-        <div>
-          {{ comment.created_at | formatDate }}
-          {{ comment.updataed_at | formatDate }}
         
-          <template v-if="comment.username == username">            
-=======
+          {{ comment.content }}
+        <div>
+          <i class="fas fa-pen-nib"></i>
           {{ comment.created_at | formatDate }}
-          {{ comment.updataed_at | formatDate }}
+          <i class="fas fa-hammer"></i>
+          {{ comment.updated_at | formatDate }}
           <template v-if="comment.username == username">
->>>>>>> 84101640a94a49c07412d637f985acba55b41ef9
             <button
             type="button" class="btn pull-right btn-light btn-sm"
             @click="deleteComment(comment, idx)"
             style="margin-left:15px">Delete</button>
-            <button type="button" class="btn pull-right btn-light btn-sm" @click="commentIdx(comment, idx)">update</button>
+            <button type="button" class="btn pull-right btn-light btn-sm" @click="commentIdx(comment, idx)">Update</button>
           </template>
         </div>
       </template>
@@ -71,11 +65,7 @@ export default {
   filters: {
     formatDate: function(value) {
       if (value) {
-<<<<<<< HEAD
-        return moment(String(value)).format('MM월 DD일')
-=======
-        return moment(String(value)).format('YYYY년 MM월 DD일 hh:mm')
->>>>>>> 84101640a94a49c07412d637f985acba55b41ef9
+        return moment(String(value)).format('YY/MM/DD HH:MM')
       }
     }
   },

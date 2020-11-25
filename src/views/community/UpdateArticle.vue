@@ -8,11 +8,11 @@
     <form class="container" @submit.prevent="updateArticle">
       <div class="form-group">
         <label for="exampleInputEmail1">Title</label>
-        <input type="text" class="form-control name2" id="exampleInputEmail1" aria-describedby="emailHelp" v-model.trim="pickArticle.title" @keypress.enter="updateArticle">
+        <input type="text" class="form-control name2" id="exampleInputEmail1" aria-describedby="emailHelp" v-model.trim="pickArticle.title">
       </div>
       <div class="form-group">
         <label for="exampleFormControlTextarea1">Content</label>
-        <textarea class="form-control message2" id="exampleFormControlTextarea1" rows="5" v-model.trim="pickArticle.content" @keypress.enter="updateArticle"></textarea>
+        <textarea class="form-control message2" id="exampleFormControlTextarea1" rows="5" v-model.trim="pickArticle.content"></textarea>
       </div>
       <button id="input-submit" class="w3-bar-item w3-button tablink " @click="updateArticle"><i class="fa fa-plane w3-margin-right"></i>Submit</button>
     </form>
