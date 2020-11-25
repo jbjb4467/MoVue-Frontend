@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="homepage">
 
     <Movies
       v-if="review_recommend.length!==0"
@@ -161,6 +161,10 @@ export default {
 }
 </script>
 <style scoped>
+
+#homepage {
+  margin-top: 8rem;
+}
 
 .text-small {
     font-size: 0.9rem !important;

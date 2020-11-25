@@ -1,5 +1,5 @@
 <template>
-  <div class="background w3-display-middle">
+  <div id="createArticle" class="background w3-display-middle">
     <div>
       <br>
       <h1 class="font-weight-bolder text-center mb-0">Update Article</h1>
@@ -56,5 +56,6 @@ export default {
 </script>
 
 <style>
+
 
 </style>

@@ -6,8 +6,8 @@
         <template v-if="idx !== updateIdx">
           {{ comment.username }}
           {{ comment.content }}
-          {{ comment.created_at }}
-          {{ comment.updataed_at }}
+          {{ comment.created_at | formatDate }}
+          {{ comment.updataed_at | formatDate }}
           <template v-if="comment.username == username">
             <button
             type="button" class="btn btn-light btn-sm"
@@ -29,6 +29,7 @@
 
 <script>
 import axios from 'axios'
+import moment from 'moment'
 export default {
   name: 'CommentList',
   data: function () {
@@ -53,6 +54,13 @@ export default {
     newComment: {
         type: Object
     },
+  },
+  filters: {
+    formatDate: function(value) {
+      if (value) {
+        return moment(String(value)).format('YYYY년 MM월 DD일 hh:mm')
+      }
+    }
   },
   methods: {
     commentIdx: function (comment, idx) {
@@ -115,7 +123,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .margin{
     margin-left: 20px;

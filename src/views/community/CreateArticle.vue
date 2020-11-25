@@ -1,5 +1,5 @@
 <template>
-  <div class="background w3-display-middle">
+  <div id="createArticle" class="background w3-display-middle">
     <div>
       <br>
       <h1 class="font-weight-bolder text-center mb-0">New Article</h1>
@@ -64,6 +64,14 @@ export default {
 </script>
 
 <style>
+
+#createArticle {
+  padding-top: 8rem;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
 .name2 {
   background: rgba(255, 255, 255, 0.4) url(http://luismruiz.com/img/gemicon_name.png) no-repeat scroll 16px 16px; 
   padding-left:45px;
