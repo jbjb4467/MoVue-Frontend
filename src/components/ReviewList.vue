@@ -56,18 +56,23 @@
 import axios from 'axios'
 import moment from 'moment'
 
-// import UpdateReview from '@/components/UpdateReview'
+import UpdateReview from '@/components/UpdateReview'
 
 export default {
   name: 'ReviewList',
   components: {
-    // UpdateReview,
+    UpdateReview,
   },
   data: function () {
     return {
       reviews: [],
       updateIdx: -1,
       username: '',
+    }
+  },
+  computed: {
+    reviewMovieId: function () {
+      return this.$store.state.selectedMovie
     }
   },
   filters: {
@@ -78,6 +83,19 @@ export default {
     }
   },
   watch: {
+    reviewMovieId: function (newVal) {
+      const token = localStorage.getItem('jwt')
+      const config = {
+        headers: {
+          Authorization: `JWT ${token}`
+        }
+      }
+      axios.get(`http://3.139.100.250/movies/${newVal}/review/`, config)
+        .then((res) => {
+          this.reviews = res.data
+        })
+        .catch(err => console.log(err))
+    },
     newReview: function (newVal) {
       console.log(newVal)
       this.reviews.push(newVal)
@@ -96,7 +114,7 @@ export default {
         Authorization: `JWT ${token}`
       }
     }
-    axios.get(`http://127.0.0.1:8000/movies/${this.$store.state.selectedMovie}/review/`, config)
+    axios.get(`http://3.139.100.250/movies/${this.$store.state.selectedMovie}/review/`, config)
       .then((res) => {
         this.reviews = res.data
         console.log(res.data)
@@ -119,7 +137,7 @@ export default {
           Authorization: `JWT ${token}`
         }
       }
-      axios.delete(`http://127.0.0.1:8000/movies/${this.$store.state.selectedMovie}/review/${review.id}`, config)
+      axios.delete(`http://3.139.100.250/movies/${this.$store.state.selectedMovie}/review/${review.id}`, config)
         .then((res => {
           console.log(res)
         }))

@@ -30,7 +30,7 @@
 
     <div id="slide">
 
-      <h4 style="color: #ffffff">비슷한 컨텐츠</h4>
+      <h4 style="color: #ffffff">이런 영화 어때요</h4>
       
       <carousel
         :navigationEnabled="true"
@@ -113,7 +113,7 @@ export default {
   watch: {
     modalMovieId: function (newVal) {
       this.youtubeURL = 'https://www.youtube.com/embed/'
-      axios.get(`http://127.0.0.1:8000/movies/${newVal}`)
+      axios.get(`http://3.139.100.250/movies/${newVal}`)
         .then((res) => {
           this.movieDetail = res.data
           axios.get(MOVIE_DB_API_URL_SIMILAR+'/'+newVal+'/similar', {
@@ -125,6 +125,17 @@ export default {
           })
             .then((res) => {
               this.similar_movies = res.data.results
+            })
+            .catch(err => console.log(err))
+          const token = localStorage.getItem('jwt')
+          const config = {
+            headers: {
+              Authorization: `JWT ${token}`
+            }
+          }
+          axios.get(`http://3.139.100.250/movies/${newVal}/review/`, config)
+            .then((res) => {
+              this.reviews = res.data
             })
             .catch(err => console.log(err))
           const query = this.movieDetail.original_title + ' trailer'
@@ -147,6 +158,9 @@ export default {
     },
   },
   methods: {
+    selectMovie: function (data) {
+      this.$store.dispatch('selectMovie', data)
+    },
     getNewReview: function (data) {
       this.newReview = data
     },
