@@ -1,7 +1,7 @@
 <template>
   <div class="bgimg" :style="{ 'background-image' : `url(${backgroundUrl})` }">
     <div class="container list">
-      <h1>커뮤니티</h1>
+      <h1>{{ categoryName }}</h1>
       <b-table
         style="background: rgba(0, 0, 0, 0.7 ); color: white;"
         striped
@@ -14,31 +14,8 @@
         @row-clicked="myRowClickHandler"
       >
       </b-table>
-      <!-- <table class="table table-dark table-hover mt-3" style="background: rgba(0, 0, 0, 0.7 );">
-        <thead class="table-dark" style="background: rgba(0, 0, 0, 0.8);">
-          <tr>
-            <th scope="col">글번호</th>
-            <th scope="col">제목</th>
-            <th scope="col">ID</th>
-          </tr>
-        </thead>
-        <tbody class="tbody-">
-          <tr v-for="(article, idx) in articles" :key="idx">
-            <th scope="row">{{ article.id }}</th>
-            <td>
-              <div @click="getContentDetail(article.id)">
-                {{ article.title }}
-              </div>
-            </td>
-            <td>
-              <div @click="getContentDetail(article.id)">
-                {{ article.username }}
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table> -->
-      <button class="btn btn-light"><router-link class="dropdown-item p-2" :to="{ name: 'CreateArticle' }">추가하기</router-link></button>
+
+      <button class="btn btn-light"><router-link class="dropdown-item p-2" :to="{ name: 'CreateArticle', params: 'category' }">추가하기</router-link></button>
       <div class="mt-3 overflow-auto">
         <b-pagination
           v-model="currentPage"
@@ -95,7 +72,31 @@ export default {
       contentDetail: '',
     }
   },
+  watch: {
+    category: function (newVal) {
+      const config = this.setToken()
+      axios.get(`http://3.137.158.229/community/${newVal}/article/`, config)
+        .then((res) => {
+          this.articles = res.data
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+  },
   computed: {
+    category: function () {
+      return this.$route.params.category
+    },
+    categoryName: function () {
+      if (this.category === 1) {
+        return '자유 게시판'
+      } else if (this.category === 2) {
+        return '영화추천 게시판'
+      } else {
+        return 'Q&A 게시판'
+      }
+    },
     rows: function () {
       return this.articles.length
     },
@@ -119,7 +120,7 @@ export default {
     },
     getArticles: function () {
       const config = this.setToken()
-      axios.get('http://3.139.100.250/community/article/', config)
+      axios.get(`http://3.137.158.229/community/${this.category}/article/`, config)
         .then((res) => {
           this.articles = res.data
         })
@@ -161,6 +162,25 @@ export default {
   padding-top: 8rem;
   position: relative;
   z-index: 2;
+}
+
+.bgimg {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: no-repeat center center/cover;
+}
+
+.bgimg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.9);
+  box-shadow: 120px 100px 250px #000000, inset -120px -100px 250px #000000;
 }
 
 </style>

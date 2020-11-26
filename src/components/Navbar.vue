@@ -21,7 +21,9 @@
               
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 
-                <router-link @click.native="newAlert" class="dropdown-item" :to="{ name: 'Community' }"><span class="font-weight-bold">게시판1</span></router-link>
+                <router-link @click.native="newAlert" class="dropdown-item" :to="{ name: 'Community', params: { 'category': 1 } }"><span class="font-weight-bold">자유 게시판</span></router-link>
+                <router-link @click.native="newAlert" class="dropdown-item" :to="{ name: 'Community', params: { 'category': 2 } }"><span class="font-weight-bold">영화추천 게시판</span></router-link>
+                <router-link @click.native="newAlert" class="dropdown-item" :to="{ name: 'Community', params: { 'category': 3 } }"><span class="font-weight-bold">Q&A 게시판</span></router-link>
               
               </div>
             
@@ -60,8 +62,12 @@
               placeholder="영화를 검색해주세요..."
               @hit="selectedMovie = $event"
             />
-            <i class="fas fa-search fa-2x" @click="selectMovie(searchId)" style="color: white; margin-left: 10px; margin-top: 3px;" v-b-modal.modal-scrollable></i>
-            <!-- <button class="btn btn-danger" @click="selectMovie(searchId)" v-b-modal.modal-scrollable>검색하기</button> -->
+            <template v-if="isLogin">
+              <i class="fas fa-search fa-2x" @click="selectMovie(searchId); newAlert();" style="color: white; margin-left: 10px; margin-top: 3px;" v-b-modal.modal-scrollable></i>
+            </template>
+            <template v-else>
+              <i class="fas fa-search fa-2x" @click="selectMovie(searchId); newAlert();" style="color: white; margin-left: 10px; margin-top: 3px;"></i>
+            </template>
           </div>
         </div>
 
@@ -95,7 +101,7 @@ export default {
   },
   watch: {
     selectedMovie: function (newVal) {
-      axios.get(`http://3.139.100.250/movies/title/${newVal}/`)
+      axios.get(`http://3.137.158.229/movies/title/${newVal}/`)
         .then((res) => {
           this.searchId = res.data.id
           this.selectMovie(this.searchId)
@@ -129,7 +135,7 @@ export default {
     },
   },
   created: function () {
-    axios.get('http://3.139.100.250/movies/')
+    axios.get('http://3.137.158.229/movies/')
       .then((res) => {
         const movies = res.data
         this.movies = movies

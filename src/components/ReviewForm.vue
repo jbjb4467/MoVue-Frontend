@@ -4,7 +4,7 @@
       label="한줄평 남기기"
       label-size="lg"
       label-class="font-weight-bold pt-0"
-      class="mb-0 d-flex justify-content-center"
+      class="mb-0"
     >
       <b-form-rating inline no-border size="lg" v-model="halfRank" variant="danger" class="mb-2" style="background-color: transparent;"></b-form-rating>
       <b-form-group
@@ -69,7 +69,7 @@ export default {
         'movie_id': movie_id,
         'rank': this.halfRank*2
       }
-      axios.post(`http://3.139.100.250/movies/${movie_id}/review/`,data, config)
+      axios.post(`http://3.137.158.229/movies/${movie_id}/review/`,data, config)
         .then((res)=>{
           this.newReview = res.data
           this.$emit('get-new-review', this.newReview)

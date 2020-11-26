@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     login: function () {
-      axios.post('http://3.139.100.250/accounts/api-token-auth/', this.credentials,)
+      axios.post('http://3.137.158.229/accounts/api-token-auth/', this.credentials,)
         .then((res) => {
           const username = res.config.data.split('"')[3]
           localStorage.setItem('jwt', res.data.token)
@@ -84,7 +84,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .bgimg {
   width: 100%;

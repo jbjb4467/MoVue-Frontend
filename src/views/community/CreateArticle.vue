@@ -30,6 +30,11 @@ export default {
       title: '',
     }
   },
+  computed: {
+    category: function () {
+      return this.$route.params.category
+    },
+  },
   methods: {
     setToken: function () {
       const token = localStorage.getItem('jwt')
@@ -49,7 +54,7 @@ export default {
         title: this.title,
       }
         if (item.content) {
-           axios.post('http://3.139.100.250/community/article/', item, config)
+           axios.post(`http://3.137.158.229/community/${this.category}/article/`, item, config)
             .then((res) => {
               console.log(res)
               this.$router.push({ name: 'Community' })
