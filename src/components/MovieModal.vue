@@ -80,7 +80,7 @@ import { Carousel, Slide } from "vue-carousel"
 
 const YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3/search'
 // const YOUTUBE_API_KEY = process.env.VUE_APP_YOUTUBE_API_KEY
-const YOUTUBE_API_KEY = '1'
+const YOUTUBE_API_KEY = 'AIzaSyDWCFb-jaZFOvL-Z-YjixJXludwJpcLpFI'
 const MOVIE_DB_API_KEY = '8c896d14651cf3bca1379eadbe278379'
 const MOVIE_DB_API_URL_SIMILAR = `https://api.themoviedb.org/3/movie`
 
