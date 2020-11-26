@@ -14,12 +14,12 @@
       <div class="d-flex">
         <p style="width:100px; margin-bottom: 0;"><b>내용</b></p>
         <p class="text-left ml-4">{{ article.content }}</p>
-      </div> 
+      </div>
       <div>
-        <p class="float-right">생성시간: {{ article.created_at | formatDate }}</p>
-        </div>
-        <div>
-          <p class="float-right">수정시간: {{ article.updated_at | formatDate }}</p>
+        <p class="float-right"><i class="fas fa-pen-nib"></i> {{ article.updated_at | formatDate }}</p>
+      </div>
+      <div>
+        <p class="float-right"><i class="fas fa-hammer"></i> {{ article.created_at | formatDate }}</p>
       </div>
 
   <!-- v-if="article.user ===" -->
