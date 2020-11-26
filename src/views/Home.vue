@@ -80,7 +80,7 @@ export default {
     MovieModal,
   },
   created: function () {
-    console.log(this.review_recommend)
+    // console.log(this.review_recommend)
     axios.get(MOVIE_DB_API_URL_POPULAR, {
       params: {
         api_key: MOVIE_DB_API_KEY,
@@ -135,8 +135,9 @@ export default {
         Authorization: `JWT ${token}`
       }
     }
-    axios.get('http://127.0.0.1:8000/movies/review_recommend/',config)
+    axios.get('http://3.139.100.250/movies/review_recommend/',config)
       .then((res) => {
+        console.log(res)
         this.review_recommend = res.data
       })
       .catch((err) => {

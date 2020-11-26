@@ -27,7 +27,7 @@
       <template v-if="article.username == username">
         <div>
           <button class="btn btn-light btn-sm" @click="updateArticle(article)" >update</button>
-          <button class="btn btn-light btn-sm" @click="deleteArticle(article)"><router-link :to="{ name: 'Community' }">delete</router-link></button>
+          <button class="btn btn-light btn-sm" @click="deleteArticle(article)">delete</button>
         </div>
       </template>
 
@@ -113,7 +113,7 @@ export default {
     },
     getArticle: function () {
       const config = this.setToken()
-      axios.get(`http://127.0.0.1:8000/community/article/${this.articleId}`, config)
+      axios.get(`http://3.139.100.250/community/article/${this.articleId}`, config)
         .then((res) => {
           this.article = res.data
         })
@@ -123,10 +123,8 @@ export default {
     },
     deleteArticle: function (article) {
       const config = this.setToken()
-      axios.delete(`http://127.0.0.1:8000/community/article/${article.id}/`, config)
+      axios.delete(`http://3.139.100.250/community/article/${article.id}/`, config)
         .then(() => {
-          const targetIdx = this.articles.indexOf(article)
-          this.articles.splice(targetIdx, 1)
           this.$router.push({name: 'Community'})
         })
         .catch(err => console.log(err))
@@ -137,7 +135,7 @@ export default {
     },
     createComment: function () {
       const config = this.setToken()
-      axios.post(`http://127.0.0.1:8000/community/article/${this.articleId}/comment/`,{ content: this.commentContent },config)
+      axios.post(`http://3.139.100.250/community/article/${this.articleId}/comment/`,{ content: this.commentContent },config)
         .then((res) => {
           this.newComment = res.data
           this.commentContent = ''

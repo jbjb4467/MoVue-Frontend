@@ -60,7 +60,8 @@
               placeholder="영화를 검색해주세요..."
               @hit="selectedMovie = $event"
             />
-            <button class="btn btn-danger" @click="selectMovie(searchId)" v-b-modal.modal-scrollable>검색하기</button>
+            <i class="fas fa-search fa-2x" @click="selectMovie(searchId)" style="color: white; margin-left: 10px; margin-top: 3px;" v-b-modal.modal-scrollable></i>
+            <!-- <button class="btn btn-danger" @click="selectMovie(searchId)" v-b-modal.modal-scrollable>검색하기</button> -->
           </div>
         </div>
 
@@ -94,7 +95,7 @@ export default {
   },
   watch: {
     selectedMovie: function (newVal) {
-      axios.get(`http://127.0.0.1:8000/movies/${newVal}/`)
+      axios.get(`http://3.139.100.250/movies/title/${newVal}/`)
         .then((res) => {
           this.searchId = res.data.id
           this.selectMovie(this.searchId)
@@ -128,7 +129,7 @@ export default {
     },
   },
   created: function () {
-    axios.get('http://127.0.0.1:8000/movies/')
+    axios.get('http://3.139.100.250/movies/')
       .then((res) => {
         const movies = res.data
         this.movies = movies

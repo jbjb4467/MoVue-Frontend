@@ -119,7 +119,7 @@ export default {
     },
     getArticles: function () {
       const config = this.setToken()
-      axios.get('http://127.0.0.1:8000/community/article/', config)
+      axios.get('http://3.139.100.250/community/article/', config)
         .then((res) => {
           this.articles = res.data
         })
