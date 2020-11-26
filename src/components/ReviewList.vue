@@ -55,12 +55,12 @@
 import axios from 'axios'
 import moment from 'moment'
 
-// import UpdateReview from '@/components/UpdateReview'
+import UpdateReview from '@/components/UpdateReview'
 
 export default {
   name: 'ReviewList',
   components: {
-    // UpdateReview,
+    UpdateReview,
   },
   data: function () {
     return {
