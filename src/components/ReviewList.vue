@@ -3,11 +3,26 @@
     <table class="table my-5">
       <tbody>
         <tr v-for="(review, idx) in reviews" :key="idx" style="width: 100%; color: white;">
-          <th scope="row">{{ review.username }}</th>
-          <td>{{ review.comment }}</td>
-          <td>{{ review.movie_title }}</td>
-          <td style="color: white;"><i class="fas fa-star" style="color: #d9534f;"></i>×{{ review.rank/2 }}</td>
-          <td>{{ review.updated_at | formatDate }}</td>
+          <template v-if="idx !== updateIdx">
+            <th scope="row">{{ review.username }}</th>
+            <td>{{ review.comment }}</td>
+            <td>{{ review.movie_title }}</td>
+            <td style="color: white;"><i class="fas fa-star" style="color: #d9534f;"></i>×{{ review.rank/2 }}</td>
+            <td>{{ review.updated_at | formatDate }}</td>
+            
+            <td>
+              <template v-if="review.username == username">
+                <i class="fas fa-pencil-alt btn btn-light" @click="updateReview(idx)"></i>
+                <i class="fas fa-times-circle btn btn-light" @click="deleteReview(review, idx)"></i>
+              </template>
+            </td>
+          </template>
+          <template v-else>
+            <UpdateReview
+              :updateReview="review"
+              @update-review="changeReview"
+            />
+          </template>
         </tr>
       </tbody>
     </table>
