@@ -5,6 +5,10 @@
       @logout="logout"
     />
 
+    <MovieModal
+      :isLogin="isLogin"
+    />
+
     <router-view
       @login="login"
       :isLogin="isLogin"
@@ -13,10 +17,12 @@
 </template>
 <script>
 import Navbar from '@/components/Navbar'
+import MovieModal from '@/components/MovieModal'
 export default {
   name: 'App',
   components: {
     Navbar,
+    MovieModal,
   },
   data: function () {
     return {

@@ -4,22 +4,19 @@
       label="영화리뷰 수정하기"
       label-size="lg"
       label-class="font-weight-bold pt-0"
-      class="mb-0 d-flex justify-content-center"
+      class="mb-0"
     >
-      <b-form-rating no-border size="lg" v-model="newRank" variant="danger" class="mb-2" style="background-color: transparent;"></b-form-rating>
+      <b-form-rating inline no-border size="lg" v-model="newRank" variant="danger" class="mb-2" style="background-color: transparent;"></b-form-rating>
       <b-form-group
-        label-cols-sm="3"
-        label="한줄평"
-        label-align-sm="left"
         label-for="comment"
       >
         <b-form-input
           id="comment"
           placeholder="한줄평을 써주세요"
           v-model="reviewComment"
+          @keypress.enter="submitReview"
         ></b-form-input>
       </b-form-group>
-      <b-button @click="submitReview">submit</b-button>
     </b-form-group>
   </b-card>
 </template>
@@ -60,7 +57,7 @@ export default {
         'comment': this.reviewComment,
         'rank': this.newRank*2
       }
-      axios.put(`http://127.0.0.1:8000/movies/${this.updateReview.movie_id}/review/${this.updateReview.id}/`, data, config)
+      axios.put(`http:///3.137.158.229/movies/${this.updateReview.movie_id}/review/${this.updateReview.id}/`, data, config)
         .then((res) => {
           this.$emit('update-review',res.data)
         })

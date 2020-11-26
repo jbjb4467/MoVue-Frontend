@@ -28,6 +28,11 @@ export default {
       pickArticle: '',
     }
   },
+  computed: {
+    category: function () {
+      return this.$route.params.category
+    },
+  },
   methods: {
     setToken: function () {
       const token = localStorage.getItem('jwt')
@@ -41,10 +46,10 @@ export default {
     },
     updateArticle: function () {
       const config = this.setToken()
-      axios.put(`http://3.139.100.250/community/article/${this.pickArticle.id}/`, {'title': this.pickArticle.title, 'content': this.pickArticle.content}, config)
+      axios.put(`http://3.137.158.229/community/${this.category}/article/${this.pickArticle.id}/`, {'title': this.pickArticle.title, 'content': this.pickArticle.content}, config)
         .then((res) => {
           console.log(res)
-          this.$router.push({name: 'ArticleDetail', params: {'article_id': this.pickArticle.id }})
+          this.$router.push({name: 'ArticleDetail', params: {'category': this.category, 'article_id': this.pickArticle.id }})
         })
         .catch(err => console.log(err))
     },

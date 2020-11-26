@@ -33,22 +33,22 @@ const routes = [
     component: Signup
   },
   {
-    path: '/community/article/',
+    path: '/community/:category/article/',
     name: 'Community',
     component: Community
   },
   {
-    path: '/community/article/:article_id/',
+    path: '/community/:category/article/:article_id/',
     name: 'ArticleDetail',
     component: ArticleDetail
   },
   {
-    path: '/community/article/create',
+    path: '/community/:category/article/create',
     name: 'CreateArticle',
     component: CreateArticle
   },
   {
-    path: '/community/article/:article_id/update',
+    path: '/community/:category/article/:article_id/update',
     name: 'UpdateArticle',
     component: UpdateArticle
   },

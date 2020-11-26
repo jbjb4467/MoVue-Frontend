@@ -35,6 +35,7 @@
       <h4 class="font-weight-bolder text-center mb-0">Comment List</h4>
       <hr>
       <CommentList
+        :category="category"
         :articleId="articleId"
         :newComment="newComment"
       />
@@ -88,6 +89,9 @@ export default {
     }
   },
   computed: {
+    category: function () {
+      return this.$route.params.category
+    },
     backgroundUrl: function () {
       const randomNum = _.sampleSize(_.range(0, 10), 1)
       return this.imgarray[randomNum]
@@ -113,7 +117,7 @@ export default {
     },
     getArticle: function () {
       const config = this.setToken()
-      axios.get(`http://3.139.100.250/community/article/${this.articleId}`, config)
+      axios.get(`http://3.137.158.229/community/${this.category}/article/${this.articleId}`, config)
         .then((res) => {
           this.article = res.data
         })
@@ -123,7 +127,7 @@ export default {
     },
     deleteArticle: function (article) {
       const config = this.setToken()
-      axios.delete(`http://3.139.100.250/community/article/${article.id}/`, config)
+      axios.delete(`http://3.137.158.229/community/${this.category}/article/${article.id}/`, config)
         .then(() => {
           this.$router.push({name: 'Community'})
         })
@@ -135,7 +139,7 @@ export default {
     },
     createComment: function () {
       const config = this.setToken()
-      axios.post(`http://3.139.100.250/community/article/${this.articleId}/comment/`,{ content: this.commentContent },config)
+      axios.post(`http://3.137.158.229/community/${this.category}/article/${this.articleId}/comment/`,{ content: this.commentContent },config)
         .then((res) => {
           this.newComment = res.data
           this.commentContent = ''
@@ -148,21 +152,39 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 #app > div {
   color: white;
 }
 
+
+.bgimg {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: no-repeat center center/cover;
+}
+
+.bgimg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 120px 100px 250px #000000, inset -120px -100px 250px #000000;
+}
+
 .article {
   color: #f4f4f4;
-  /* background-color:#f4f4f4; */
-  /* opacity: 0.5; */
   display: flex;
   flex-direction: column;
   -webkit-box-pack: center;
   justify-content: center;
-  width: 300px;
+  width: 100%;
   padding-top: 8rem;
   position: relative;
   z-index: 2;

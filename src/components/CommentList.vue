@@ -4,7 +4,7 @@
       v-for="(comment, idx) in comments" 
       :key="idx">
       <template v-if="idx !== updateIdx">
-        <div>
+        <div style="width: 1rem;">
           {{ comment.username }}
         </div>
         
@@ -55,6 +55,9 @@ export default {
     },
   },
   props: {
+    category: {
+      type: [Number, String]
+    },
     articleId: {
         type: [Number, String]
     },
@@ -88,7 +91,7 @@ export default {
     },
     getComment: function () {
       const config = this.setToken()
-      axios.get(`http://3.139.100.250/community/article/${this.articleId}/comment/`, config)
+      axios.get(`http://3.137.158.229/community/${this.category}/article/${this.articleId}/comment/`, config)
       .then((res) => {
         this.comments = res.data
         console.log(res.data)
@@ -100,7 +103,7 @@ export default {
     },
     deleteComment: function (comment, idx) {
       const config = this.setToken()
-      axios.delete(`http://3.139.100.250/community/article/${this.articleId}/comment/${comment.id}`, config)
+      axios.delete(`http://3.137.158.229/community/${this.category}/article/${this.articleId}/comment/${comment.id}`, config)
         .then(res => {
           console.log(res)
         })
@@ -109,7 +112,7 @@ export default {
     },
     updateComment: function () {
       const config = this.setToken()
-      axios.put(`http://3.139.100.250/community/article/${this.articleId}/comment/${this.updateCommentIdx}/`,
+      axios.put(`http://3.137.158.229/community/${this.category}/article/${this.articleId}/comment/${this.updateCommentIdx}/`,
         { 'content': this.updateCommentContent }, config)
           .then((res) => {
             this.comments[this.updateIdx] = res.data

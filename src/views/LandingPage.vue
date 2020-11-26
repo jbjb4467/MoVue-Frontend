@@ -18,13 +18,13 @@
     
     <div class="carousel-inner" role="listbox">
       <div class="carousel-item active bgimg" data-interval="1500">
-        <img class="w-100" height="100%" :src="image" alt="First slide">
+        <img width="auto" height="100%" overfit="cover" :src="image" alt="First slide">
       </div>
       <div class="carousel-item bgimg" data-interval="1500">
-        <img class="w-100" height="100%" :src="image2" alt="Second slide">
+        <img width="auto" height="100%" overfit="cover" :src="image2" alt="Second slide">
       </div>
       <div class="carousel-item bgimg" data-interval="1500">
-        <img class="w-100" height="100%" :src="image3" alt="Third slide">
+        <img width="auto" height="100%" overfit="cover" :src="image3" alt="Third slide">
       </div>
     </div>
   </div>
@@ -72,6 +72,10 @@ export default {
   .carousel-inner {
     width: 100%;
     height: 100%;
+  }
+
+  .carousel-item {
+    text-align: center;
   }
 
   #mention {

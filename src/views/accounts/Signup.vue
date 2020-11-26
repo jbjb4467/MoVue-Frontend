@@ -15,7 +15,7 @@
         <input class="form-control mr-sm-2" style="width: 100%; height: 45px; padding: 10px;" placeholder="아이디를 입력해주세요" type="text" id="username" v-model="credentials.username">
         <input class="form-control mr-sm-2" style="width: 100%; height: 45px; padding: 10px;" placeholder="비밀번호를 입력해주세요" type="password" id="password" v-model="credentials.password">
         <input class="form-control mr-sm-2" style="width: 100%; height: 45px; padding: 10px;" placeholder="비밀번호를 한 번 더 입력해주세요" type="password" id="passwordConfirm" v-model="credentials.passwordConfirm" @keypress.enter="signup">
-        <button @click="signup" type="button" class="btn btn-danger mt-3" style="width: 100%;">로그인</button>
+        <button @click="signup" type="button" class="btn btn-danger mt-3" style="width: 100%;">회원가입</button>
       
       </form>
     
@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     signup: function () {
-      axios.post('http://3.139.100.250/accounts/signup/', this.credentials,)
+      axios.post('http://3.137.158.229/accounts/signup/', this.credentials,)
         .then(() => {
           this.$router.push({ name: 'Login' })
         })

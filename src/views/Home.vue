@@ -40,9 +40,7 @@
       group_title="현재 상영 중 컨텐츠"
       class="mt-5"
     />
-    <MovieModal
-      :isLogin="isLogin"
-    />
+
 
   </div>
 </template>
@@ -50,7 +48,6 @@
 <script>
 import axios from 'axios'
 import Movies from '@/components/Movies'
-import MovieModal from '@/components/MovieModal'
 
 
 const MOVIE_DB_API_URL_POPULAR = 'https://api.themoviedb.org/3/movie/popular'
@@ -77,7 +74,6 @@ export default {
   },
   components: {
     Movies,
-    MovieModal,
   },
   created: function () {
     // console.log(this.review_recommend)
@@ -135,7 +131,7 @@ export default {
         Authorization: `JWT ${token}`
       }
     }
-    axios.get('http://3.139.100.250/movies/review_recommend/',config)
+    axios.get('http://3.137.158.229/movies/review_recommend/',config)
       .then((res) => {
         console.log(res)
         this.review_recommend = res.data
