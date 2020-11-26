@@ -17,6 +17,7 @@
               </template>
             </td>
           </template>
+          
           <template v-else>
             <UpdateReview
               :updateReview="review"
