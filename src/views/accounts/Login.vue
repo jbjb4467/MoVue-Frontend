@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     login: function () {
-      axios.post('https://3.139.100.250/accounts/api-token-auth/', this.credentials,)
+      axios.post('http://3.139.100.250/accounts/api-token-auth/', this.credentials,)
         .then((res) => {
           const username = res.config.data.split('"')[3]
           localStorage.setItem('jwt', res.data.token)
