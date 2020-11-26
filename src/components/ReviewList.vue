@@ -89,7 +89,7 @@ export default {
           Authorization: `JWT ${token}`
         }
       }
-      axios.get(`http://3.137.158.229/movies/${newVal}/review/`, config)
+      axios.get(`http://52.15.33.63/movies/${newVal}/review/`, config)
         .then((res) => {
           this.reviews = res.data
         })
@@ -113,7 +113,7 @@ export default {
         Authorization: `JWT ${token}`
       }
     }
-    axios.get(`http://3.137.158.229/movies/${this.$store.state.selectedMovie}/review/`, config)
+    axios.get(`http://52.15.33.63/movies/${this.$store.state.selectedMovie}/review/`, config)
       .then((res) => {
         this.reviews = res.data
         console.log(res.data)
@@ -136,7 +136,7 @@ export default {
           Authorization: `JWT ${token}`
         }
       }
-      axios.delete(`http://3.137.158.229/movies/${this.$store.state.selectedMovie}/review/${review.id}`, config)
+      axios.delete(`http://52.15.33.63/movies/${this.$store.state.selectedMovie}/review/${review.id}`, config)
         .then((res => {
           console.log(res)
         }))
