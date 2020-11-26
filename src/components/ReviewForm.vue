@@ -69,7 +69,7 @@ export default {
         'movie_id': movie_id,
         'rank': this.halfRank*2
       }
-      axios.post(`http://3.139.100.250/movies/${movie_id}/review/`,data, config)
+      axios.post(`https://3.139.100.250/movies/${movie_id}/review/`,data, config)
         .then((res)=>{
           this.newReview = res.data
           this.$emit('get-new-review', this.newReview)

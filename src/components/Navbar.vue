@@ -95,7 +95,7 @@ export default {
   },
   watch: {
     selectedMovie: function (newVal) {
-      axios.get(`http://3.139.100.250/movies/title/${newVal}/`)
+      axios.get(`https://3.139.100.250/movies/title/${newVal}/`)
         .then((res) => {
           this.searchId = res.data.id
           this.selectMovie(this.searchId)
@@ -129,7 +129,7 @@ export default {
     },
   },
   created: function () {
-    axios.get('http://3.139.100.250/movies/')
+    axios.get('https://3.139.100.250/movies/')
       .then((res) => {
         const movies = res.data
         this.movies = movies

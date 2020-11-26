@@ -135,7 +135,7 @@ export default {
         Authorization: `JWT ${token}`
       }
     }
-    axios.get('http://3.139.100.250/movies/review_recommend/',config)
+    axios.get('https://3.139.100.250/movies/review_recommend/',config)
       .then((res) => {
         console.log(res)
         this.review_recommend = res.data
