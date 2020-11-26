@@ -46,7 +46,7 @@ export default {
     },
     updateArticle: function () {
       const config = this.setToken()
-      axios.put(`http://3.137.158.229/community/${this.category}/article/${this.pickArticle.id}/`, {'title': this.pickArticle.title, 'content': this.pickArticle.content}, config)
+      axios.put(`http://52.15.33.63/community/${this.category}/article/${this.pickArticle.id}/`, {'title': this.pickArticle.title, 'content': this.pickArticle.content}, config)
         .then((res) => {
           console.log(res)
           this.$router.push({name: 'ArticleDetail', params: {'category': this.category, 'article_id': this.pickArticle.id }})

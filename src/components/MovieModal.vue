@@ -113,7 +113,7 @@ export default {
   watch: {
     modalMovieId: function (newVal) {
       this.youtubeURL = 'https://www.youtube.com/embed/'
-      axios.get(`http://3.137.158.229/movies/${newVal}`)
+      axios.get(`http://52.15.33.63/movies/${newVal}`)
         .then((res) => {
           this.movieDetail = res.data
           axios.get(MOVIE_DB_API_URL_SIMILAR+'/'+newVal+'/similar', {
@@ -133,7 +133,7 @@ export default {
               Authorization: `JWT ${token}`
             }
           }
-          axios.get(`http://3.137.158.229/movies/${newVal}/review/`, config)
+          axios.get(`http://52.15.33.63/movies/${newVal}/review/`, config)
             .then((res) => {
               this.reviews = res.data
             })
