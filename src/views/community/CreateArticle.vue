@@ -54,7 +54,7 @@ export default {
         title: this.title,
       }
         if (item.content) {
-           axios.post(`http://52.15.33.63/community/${this.category}/article/`, item, config)
+           axios.post(`http://3.21.166.3/community/${this.category}/article/`, item, config)
             .then((res) => {
               console.log(res)
               this.$router.push({ name: 'Community' })

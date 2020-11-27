@@ -117,7 +117,7 @@ export default {
     },
     getArticle: function () {
       const config = this.setToken()
-      axios.get(`http://52.15.33.63/community/${this.category}/article/${this.articleId}`, config)
+      axios.get(`http://3.21.166.3/community/${this.category}/article/${this.articleId}`, config)
         .then((res) => {
           this.article = res.data
         })
@@ -127,7 +127,7 @@ export default {
     },
     deleteArticle: function (article) {
       const config = this.setToken()
-      axios.delete(`http://52.15.33.63/community/${this.category}/article/${article.id}/`, config)
+      axios.delete(`http://3.21.166.3/community/${this.category}/article/${article.id}/`, config)
         .then(() => {
           this.$router.push({name: 'Community'})
         })
@@ -139,7 +139,7 @@ export default {
     },
     createComment: function () {
       const config = this.setToken()
-      axios.post(`http://52.15.33.63/community/${this.category}/article/${this.articleId}/comment/`,{ content: this.commentContent },config)
+      axios.post(`http://3.21.166.3/community/${this.category}/article/${this.articleId}/comment/`,{ content: this.commentContent },config)
         .then((res) => {
           this.newComment = res.data
           this.commentContent = ''

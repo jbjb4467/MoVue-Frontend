@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     signup: function () {
-      axios.post('http://52.15.33.63/accounts/signup/', this.credentials,)
+      axios.post('http://3.21.166.3/accounts/signup/', this.credentials,)
         .then(() => {
           this.$router.push({ name: 'Login' })
         })
