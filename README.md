@@ -18,7 +18,7 @@
 
 Vue.js  ```http://movuejbcw.s3-website.ap-northeast-2.amazonaws.com/```
 
-Django ```3.21.166.3```
+Django ```127.0.0.1:8000```
 
 
 

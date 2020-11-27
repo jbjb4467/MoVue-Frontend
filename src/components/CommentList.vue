@@ -91,7 +91,7 @@ export default {
     },
     getComment: function () {
       const config = this.setToken()
-      axios.get(`http://3.21.166.3/community/${this.category}/article/${this.articleId}/comment/`, config)
+      axios.get(`http://127.0.0.1:8000/community/${this.category}/article/${this.articleId}/comment/`, config)
       .then((res) => {
         this.comments = res.data
         console.log(res.data)
@@ -103,7 +103,7 @@ export default {
     },
     deleteComment: function (comment, idx) {
       const config = this.setToken()
-      axios.delete(`http://3.21.166.3/community/${this.category}/article/${this.articleId}/comment/${comment.id}`, config)
+      axios.delete(`http://127.0.0.1:8000/community/${this.category}/article/${this.articleId}/comment/${comment.id}`, config)
         .then(res => {
           console.log(res)
         })
@@ -112,7 +112,7 @@ export default {
     },
     updateComment: function () {
       const config = this.setToken()
-      axios.put(`http://3.21.166.3/community/${this.category}/article/${this.articleId}/comment/${this.updateCommentIdx}/`,
+      axios.put(`http://127.0.0.1:8000/community/${this.category}/article/${this.articleId}/comment/${this.updateCommentIdx}/`,
         { 'content': this.updateCommentContent }, config)
           .then((res) => {
             this.comments[this.updateIdx] = res.data

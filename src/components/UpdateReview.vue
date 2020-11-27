@@ -57,7 +57,7 @@ export default {
         'comment': this.reviewComment,
         'rank': this.newRank*2
       }
-      axios.put(`http:///3.21.166.3/movies/${this.updateReview.movie_id}/review/${this.updateReview.id}/`, data, config)
+      axios.put(`http:///127.0.0.1:8000/movies/${this.updateReview.movie_id}/review/${this.updateReview.id}/`, data, config)
         .then((res) => {
           this.$emit('update-review',res.data)
         })

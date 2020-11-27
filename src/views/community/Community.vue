@@ -75,7 +75,7 @@ export default {
   watch: {
     category: function (newVal) {
       const config = this.setToken()
-      axios.get(`http://3.21.166.3/community/${newVal}/article/`, config)
+      axios.get(`http://127.0.0.1:8000/community/${newVal}/article/`, config)
         .then((res) => {
           this.articles = res.data
         })
@@ -120,7 +120,7 @@ export default {
     },
     getArticles: function () {
       const config = this.setToken()
-      axios.get(`http://3.21.166.3/community/${this.category}/article/`, config)
+      axios.get(`http://127.0.0.1:8000/community/${this.category}/article/`, config)
         .then((res) => {
           this.articles = res.data
         })
