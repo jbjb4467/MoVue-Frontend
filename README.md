@@ -16,9 +16,9 @@
 
 ## 배포 서버 URL
 
-Vue.js  ```http://movuejbcw.s3-website.ap-northeast-2.amazonaws.com/```
-
-Django ```127.0.0.1:8000```
+>2020.12.14 update
+>
+>aws 유료 전환으로 사용불가합니다.
 
 
 
